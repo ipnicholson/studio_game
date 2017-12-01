@@ -23,7 +23,3 @@ ninja_turtles.add_player(player11)
 ninja_turtles.add_player(player11)
 
 ninja_turtles.play
-
-# players.each do |player|
-#   puts player.health
-# end

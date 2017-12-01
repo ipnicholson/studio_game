@@ -30,12 +30,13 @@ class Player
   end
 
   if __FILE__ == $0 # only run this if this file is directly executed
-    player1 = Player.new('moe')
-    player2 = Player.new('larry', 60)
-    player3 = Player.new('curly', 125)
-
-    puts player1
-    puts player2
-    puts player3
+    player = Player.new("moe")
+    puts player.name
+    puts player.health
+    player.w00t
+    puts player.health
+    player.blam
+    puts player.health    
   end
+  
 end
