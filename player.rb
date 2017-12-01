@@ -29,4 +29,13 @@ class Player
     @name = new_name.capitalize
   end
 
+  if __FILE__ == $0 # only run this if this file is directly executed
+    player1 = Player.new('moe')
+    player2 = Player.new('larry', 60)
+    player3 = Player.new('curly', 125)
+
+    puts player1
+    puts player2
+    puts player3
+  end
 end
