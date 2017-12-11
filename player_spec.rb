@@ -1,13 +1,11 @@
 require_relative 'player'
 
-
-
 describe Player do # describe is an RSpec method
 
   before do # before is an RSpec method, this block will run before every it block
     @initial_health = 120
     @player = Player.new("moe", @initial_health)
-    $stdout = StringIO.new
+    $stdout = StringIO.new # suppress standard output so only rest results are logged to console
   end
 
   it "has a capitalized name" do
@@ -47,6 +45,26 @@ describe Player do # describe is an RSpec method
       expect(@player.health).to eq(100)
     end
 
+  end
+
+  context "with a health greater than 100" do
+    before do
+      @player = Player.new("moe", 150)
+    end
+
+    it "is strong" do
+      @player.should be_strong #syntatic sugar for @player.strong?.should == true
+    end
+  end
+
+  context "with health <= 100" do
+    before do
+      @player = Player.new("moe", 100)
+    end
+
+    it "is wimpy" do
+      @player.should_not be_strong
+    end
   end
 
 end
