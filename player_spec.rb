@@ -41,7 +41,7 @@ describe Player do # describe is an RSpec method
       @player = Player.new("moe")
     end
 
-    it "has an default health of 100" do
+    it "has a default health of 100" do
       expect(@player.health).to eq(100)
     end
 
