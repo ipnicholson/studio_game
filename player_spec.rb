@@ -1,10 +1,13 @@
 require_relative 'player'
 
+
+
 describe Player do # describe is an RSpec method
 
   before do # before is an RSpec method, this block will run before every it block
     @initial_health = 120
     @player = Player.new("moe", @initial_health)
+    $stdout = StringIO.new
   end
 
   it "has a capitalized name" do
