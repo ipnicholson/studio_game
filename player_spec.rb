@@ -1,4 +1,5 @@
 require_relative 'player'
+require_relative 'spec_helper'
 
 describe Player do # describe is an RSpec method
 
