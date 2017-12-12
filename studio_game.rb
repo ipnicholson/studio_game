@@ -19,7 +19,7 @@ player12 = Player.new('Raphael', 140)
 player13 = Player.new('Michelangelo', 160)
 
 ninja_turtles.add_player(player11)
-ninja_turtles.add_player(player11)
-ninja_turtles.add_player(player11)
+ninja_turtles.add_player(player12)
+ninja_turtles.add_player(player13)
 
 ninja_turtles.play
