@@ -26,7 +26,7 @@ class Game
       when 1..2 
         player.blam
       when 3..4 
-        puts "#{player} was skipped."
+        puts "#{player.name} was skipped."
       else 
         player.w00t
       end
