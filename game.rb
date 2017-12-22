@@ -13,15 +13,20 @@ class Game
     @players << player
   end
 
-  def play
+  def play(rounds)
     puts "There are #{@players.size} players in #{@title}"
     
     @players.each do |player|
       puts player
     end
 
-    @players.each do |player|
-      GameTurn.take_turn(player)
+    1.upto(rounds) do |number|
+      puts "\nRound #{number}:"
+      @players.each do |player|
+        GameTurn.take_turn(player)
+      end
     end
+
   end
+
 end
