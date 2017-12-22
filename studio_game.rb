@@ -10,16 +10,5 @@ knuckleheads.add_player(player1)
 knuckleheads.add_player(player2)
 knuckleheads.add_player(player3)
 
-knuckleheads.play
-
-ninja_turtles = Game.new("Ninja Turtles")
-
-player11 = Player.new('Donatello')
-player12 = Player.new('Raphael', 140)
-player13 = Player.new('Michelangelo', 160)
-
-ninja_turtles.add_player(player11)
-ninja_turtles.add_player(player11)
-ninja_turtles.add_player(player11)
-
-ninja_turtles.play
+knuckleheads.play(3)
+knuckleheads.print_stats
