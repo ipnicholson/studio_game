@@ -20,13 +20,29 @@ class Game
       puts player
     end
 
-    1.upto(rounds) do |number|
-      puts "\nRound #{number}:"
+    1.upto(rounds) do |round|
+      puts "\nRound #{round}:"
       @players.each do |player|
         GameTurn.take_turn(player)
       end
     end
 
+  end
+
+  def print_stats 
+    strong_players, wimpy_players = @players.partition { |player| player.strong? }
+    
+    puts "\n#{@title} Statistics:"
+
+    puts "\n#{strong_players.length} strong players:"
+    strong_players.each do |player|
+      puts "#{player.name} (#{player.health})"
+    end
+
+    puts "\n#{wimpy_players.length} wimpy players:"
+    wimpy_players.each do |player|
+      puts "#{player.name} (#{player.health})"
+    end
   end
 
 end
