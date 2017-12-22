@@ -12,7 +12,7 @@ class Player
   end
 
   def <=>(other_player)
-    other_player.score <=> @score
+    other_player.score <=> score
   end
 
   def strong?
