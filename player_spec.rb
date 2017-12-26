@@ -37,6 +37,22 @@ describe Player do # describe is an RSpec method
     expect(@player.health).to eq(@initial_health - 10)
   end
 
+  it "computes points as the sum of all treasure points" do
+    expect(@player.points).to eq(0)
+
+    @player.found_treasure(Treasure.new(:hammer, 50))
+    
+    expect(@player.points).to eq(50)
+
+    @player.found_treasure(Treasure.new(:skillet, 100))
+
+    expect(@player.points).to eq(150)
+
+    @player.found_treasure(Treasure.new(:crowbar, 400))
+
+    expect(@player.points).to eq(550)
+  end
+
   context "created with a default health of 100" do
     before do
       @player = Player.new("moe")
