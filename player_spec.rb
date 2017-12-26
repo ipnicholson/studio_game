@@ -18,11 +18,18 @@ describe Player do # describe is an RSpec method
   end
 
   it "has a string representation" do
-    expect(@player.to_s).to eq("I'm Moe with a health of 120 and a score of 123.")
+    @player.found_treasure(Treasure.new(:hammer, 50))
+    @player.found_treasure(Treasure.new(:hammer, 50))
+
+    expect(@player.to_s).to eq("I'm Moe with health = 120, points = 100, and score = 220.")
   end
 
-  it "computes a score as the sum of its health and length of name" do
-    expect(@player.score).to eq(@initial_health + @player.name.length)
+  it "computes a score as the sum of its health and points" do
+    @player.found_treasure(Treasure.new(:hammer, 50))
+    @player.found_treasure(Treasure.new(:hammer, 50))
+    
+    expect(@player.score).to eq(@initial_health + @player.points)
+
   end
 
   it "increases health by 15 when w00ted" do
