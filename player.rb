@@ -5,6 +5,7 @@ class Player
   def initialize(name, health=100)
     @name = name.capitalize
     @health = health
+    @found_treasures = Hash.new(0)
   end
 
   def to_s
@@ -35,6 +36,16 @@ class Player
 
   def name=(new_name)
     @name = new_name.capitalize
+  end
+
+  def found_treasure(treasure) #treasure is a treasure object
+    @found_treasures[treasure.name] += treasure.points
+    puts "#{@name} found a #{treasure.name} worth #{treasure.points} points"
+    puts "#{@name}'s treasures: #{@found_treasures}"
+  end
+
+  def points # returns sum of player's treasure points
+    @found_treasures.values.reduce(0, :+)
   end
 
   if __FILE__ == $0 # only run this if this file is directly executed
