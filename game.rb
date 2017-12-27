@@ -1,5 +1,6 @@
 require_relative 'player'
 require_relative 'game_turn'
+require_relative 'treasure_trove'
 
 class Game
   def initialize(title)
@@ -20,6 +21,14 @@ class Game
       puts player
     end
 
+    treasures = TreasureTrove::TREASURES
+
+    puts "\nThere are #{treasures.size} treasures to be found:"
+    
+    treasures.each do |treasure|
+      puts "A #{treasure.name} is worth #{treasure.points} points."
+    end
+
     1.upto(rounds) do |round|
       puts "\nRound #{round}:"
       @players.each do |player|
@@ -29,6 +38,10 @@ class Game
 
   end
 
+  def print_name_and_health(player)
+    puts "#{player.name} (#{player.health})"
+  end
+
   def print_stats 
     strong_players, wimpy_players = @players.partition { |player| player.strong? }
     
@@ -36,13 +49,23 @@ class Game
 
     puts "\n#{strong_players.length} strong players:"
     strong_players.each do |player|
-      puts "#{player.name} (#{player.health})"
+      print_name_and_health(player)
     end
 
     puts "\n#{wimpy_players.length} wimpy players:"
     wimpy_players.each do |player|
-      puts "#{player.name} (#{player.health})"
+      print_name_and_health(player)
     end
+
+    @players.sort.each do |player| 
+      puts "\n#{player.name}'s point totals:"
+      player.each_found_treasure do |treasure| 
+        puts "#{treasure.points} total #{treasure.name} points"
+      end
+      puts "#{player.points} grand total points"
+    end
+
+    puts "\n#{total_points} total points from treasures found"
 
     puts "\n#{@title} High Scores:"
     @players.sort.each do |player|
@@ -50,6 +73,10 @@ class Game
       puts "#{formatted_name} #{player.score}"
     end
 
+  end
+
+  def total_points
+    @players.reduce(0) { |sum, player| sum + player.points }
   end
 
 end

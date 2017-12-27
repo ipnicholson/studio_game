@@ -38,4 +38,21 @@ describe Game do
     @player.health.should == @initial_health - (10 * @rounds)
   end
 
+  it "assigns a treasure for points during a player's turn" do
+    @game.play(1)
+
+    expect(@player.points).to_not be_zero
+  end
+
+  it "computes total points the sum of all player points" do
+    @player2 = Player.new("larry")
+    @game.add_player(@player2)
+
+    @player.found_treasure(Treasure.new(:hammer, 50))
+    @player2.found_treasure(Treasure.new(:hammer, 50))
+    @player2.found_treasure(Treasure.new(:hammer, 400))
+
+    expect(@game.total_points).to eq(500)
+  end
+
 end
