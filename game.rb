@@ -10,6 +10,14 @@ class Game
 
   attr_reader :title
 
+  def load_players(from_file)
+    File.readlines(from_file).each do |line| # .readlines puts output in an array
+      name, health = line.split(',')
+      player = Player.new(name, Integer(health))
+      add_player(player)
+    end
+  end
+
   def add_player(player)
     @players << player
   end
