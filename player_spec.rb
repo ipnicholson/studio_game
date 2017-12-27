@@ -60,6 +60,27 @@ describe Player do # describe is an RSpec method
     expect(@player.points).to eq(550)
   end
 
+  it "yields each found treasure and its total points" do
+    @player.found_treasure(Treasure.new(:hammer, 50))
+    @player.found_treasure(Treasure.new(:skillet, 100))
+    @player.found_treasure(Treasure.new(:skillet, 100))
+    @player.found_treasure(Treasure.new(:skillet, 100))
+    @player.found_treasure(Treasure.new(:pie, 5))
+    @player.found_treasure(Treasure.new(:pie, 5))
+
+    yielded = []
+    @player.each_found_treasure do |treasure|
+      yielded << treasure
+    end
+
+    expect(yielded).to eq [
+      Treasure.new(:hammer, 50),
+      Treasure.new(:skillet, 300),
+      Treasure.new(:pie, 10)
+  ]
+
+  end
+
   context "created with a default health of 100" do
     before do
       @player = Player.new("moe")
