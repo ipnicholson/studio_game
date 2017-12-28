@@ -18,6 +18,11 @@ class Game
     end
   end
 
+  def high_score_entry(player) # takes player obj as param
+    formatted_name = player.name.ljust(20, '.')
+    "#{formatted_name} #{player.score}"
+  end
+
   def add_player(player)
     @players << player
   end
@@ -77,10 +82,18 @@ class Game
 
     puts "\n#{@title} High Scores:"
     @players.sort.each do |player|
-      formatted_name = player.name.ljust(20, '.')
-      puts "#{formatted_name} #{player.score}"
+      puts high_score_entry(player)
     end
+  end
 
+  # TO FIX: puts to console and not file
+  def save_high_scores(to_file="high_scores.txt")
+    File.open(to_file, "w") do |file|
+      file.puts "#{@title} High Scores:"
+      @players.sort.each do |player|
+        file.puts high_score_entry(player)
+      end
+    end
   end
 
   def total_points
