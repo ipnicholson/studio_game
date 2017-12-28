@@ -12,8 +12,7 @@ class Game
 
   def load_players(from_file)
     File.readlines(from_file).each do |line| # .readlines puts output in an array
-      name, health = line.split(',')
-      player = Player.new(name, Integer(health))
+      player = Player.from_csv(line)
       add_player(player)
     end
   end
