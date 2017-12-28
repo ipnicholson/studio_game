@@ -2,7 +2,7 @@ require_relative 'game' # game requires player.rb, so that dependency is include
 
 knuckleheads = Game.new("Knuckleheads")
 
-knuckleheads.load_players('players.csv')
+knuckleheads.load_players(ARGV.shift || 'players.csv')
 
 loop do
   puts "\nHow many game rounds? ('quit' to exit)"
@@ -17,3 +17,5 @@ loop do
     puts "Please enter a number or 'quit'"
   end
 end
+
+knuckleheads.save_high_scores
