@@ -12,10 +12,6 @@ class Game
   attr_reader :title
 
   def load_players(from_file)
-    # File.readlines(from_file).each do |line| # .readlines puts output in an array
-    #   player = Player.from_csv(line)
-    #   add_player(player)
-    # end
     CSV.foreach(from_file) do |name, health| # .readlines puts output in an array
       player = Player.new(name, Integer(health))
       add_player(player)
