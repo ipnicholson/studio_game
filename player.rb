@@ -40,11 +40,6 @@ class Player
     @name = new_name.capitalize
   end
 
-  def self.from_csv(string) # takes string formatted as CSV, returns a Player object
-    name, health = string.split(',')
-    player = Player.new(name, Integer(health))
-  end
-
   def found_treasure(treasure) #treasure is a treasure object
     @found_treasures[treasure.name] += treasure.points
     puts "#{@name} found a #{treasure.name} worth #{treasure.points} points"
