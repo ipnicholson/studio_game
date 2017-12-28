@@ -86,7 +86,6 @@ class Game
     end
   end
 
-  # TO FIX: puts to console and not file
   def save_high_scores(to_file="high_scores.txt")
     File.open(to_file, "w") do |file|
       file.puts "#{@title} High Scores:"
