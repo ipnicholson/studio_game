@@ -125,4 +125,11 @@ describe Player do # describe is an RSpec method
       @players.sort.should == [@player3, @player2, @player1]
     end
   end
+
+  it "can be created from a CSV string" do
+    player = Player.from_csv("moe,100")
+
+    expect(player.name).to eq("Moe")
+    expect(player.health).to eq(100)
+  end
 end
