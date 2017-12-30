@@ -12,21 +12,18 @@ class BerserkPlayer < Player
   end
 
   def w00t
-    @w00t_count += 1
-    if @w00t_count == 6
-      @berserk = true 
-    end
     super
+    @w00t_count += 1
+    puts "#{@name} is now berserk!" if berserk?
   end
 
   def blam
     if berserk?
       puts "#{@name} was blammed, but they're berserk! So..."
       w00t
-    elsif
-      blam
+    else
+      super
     end
-    
   end
 
   if __FILE__ == $0
