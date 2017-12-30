@@ -132,4 +132,5 @@ describe Player do # describe is an RSpec method
     expect(player.name).to eq("Moe")
     expect(player.health).to eq(100)
   end
+
 end
