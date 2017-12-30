@@ -1,8 +1,13 @@
 require_relative 'game' # game requires player.rb, so that dependency is included, too
+require_relative 'clumsy_player'
 
 knuckleheads = Game.new("Knuckleheads")
 
 knuckleheads.load_players(ARGV.shift || 'players.csv')
+
+klutz = ClumsyPlayer.new("klutz", 105)
+
+knuckleheads.add_player(klutz)
 
 loop do
   puts "\nHow many game rounds? ('quit' to exit)"
