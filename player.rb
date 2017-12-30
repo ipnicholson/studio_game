@@ -45,7 +45,7 @@ class Player
     player = Player.new(name, Integer(health))
   end
 
-  def found_treasure(treasure) #treasure is a treasure object
+  def found_treasure(treasure) #takes a treasure object
     @found_treasures[treasure.name] += treasure.points
     puts "#{@name} found a #{treasure.name} worth #{treasure.points} points"
     puts "#{@name}'s treasures: #{@found_treasures}"
