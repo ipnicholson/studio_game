@@ -1,5 +1,4 @@
 require_relative 'player'
-require_relative 'clumsy_player'
 require_relative 'game_turn'
 require_relative 'treasure_trove'
 
