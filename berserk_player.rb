@@ -2,10 +2,13 @@ require_relative 'player'
 
 class BerserkPlayer < Player
 
-  def initialize(name, health)
+  def initialize(name, health=100)
     super(name, health)
     @w00t_count=0
-    @berserk = false
+  end
+
+  def berserk?
+    @w00t_count >= 6
   end
 
   def w00t
@@ -17,7 +20,7 @@ class BerserkPlayer < Player
   end
 
   def blam
-    if @berserk
+    if berserk?
       puts "#{@name} was blammed, but they're berserk! So..."
       w00t
     elsif
