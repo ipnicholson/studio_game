@@ -8,6 +8,13 @@ class ClumsyPlayer < Player
   
   # treasure are worth half their point value
 
+  def found_treasure(treasure)
+    points = treasure.points / 2
+    @found_treasures[treasure.name] += points
+    puts "#{@name} found a #{treasure.name} worth #{points} points"
+    puts "#{@name}'s treasures: #{@found_treasures}"
+  end
+
   if __FILE__ == $0
     clumsy = ClumsyPlayer.new('klutz', 100)
 
