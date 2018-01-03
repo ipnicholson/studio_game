@@ -1,11 +1,15 @@
-require_relative 'game' # game requires player.rb, so that dependency is included, too
-require_relative 'clumsy_player'
-require_relative 'berserk_player'
+#!/usr/bin/env ruby
+# ^ Unix shell convention that tells shell to execute rest of file using Ruby Interpreter
+
+require_relative '../lib/studio_game/game' # game requires player.rb, so that dependency is included, too
+require_relative '../lib/studio_game/clumsy_player'
+require_relative '../lib/studio_game/berserk_player'
 
 module StudioGame
   knuckleheads = StudioGame::Game.new("Knuckleheads")
-
-  knuckleheads.load_players(ARGV.shift || 'players.csv')
+  
+  default_player_file = File.join(File.dirname(__FILE__), 'players.csv')
+  knuckleheads.load_players(ARGV.shift || default_player_file)
 
   klutz = ClumsyPlayer.new("klutz", 105)
   knuckleheads.add_player(klutz)
