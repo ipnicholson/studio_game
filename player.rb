@@ -5,7 +5,7 @@ class Player
   include Playable
 
   attr_accessor :name
-  attr_reader :health
+  attr_accessor :health
   
   def initialize(name, health=100)
     @name = name.capitalize
@@ -21,13 +21,9 @@ class Player
     other_player.score <=> score
   end
 
-  
-
   def score
     @health + points
   end
-
-  
 
   def name=(new_name)
     @name = new_name.capitalize
