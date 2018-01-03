@@ -8,7 +8,7 @@ Gem::Specification.new do |s|
   s.description = "File.read(File.join(File.dirname(__FILE__), 'README.md'"
   s.licenses    = ['MIT']
   
-  s.files       = Dir["{bin,lib,spec}/**/*"] + %w(LICENSE README)
+  s.files       = Dir["{bin,lib,spec}/**/*"] + %w(LICENSE.md README.md)
   s.test_files  = Dir["spec/**/*"]
   s.executables = [ 'studio_game' ]
 
