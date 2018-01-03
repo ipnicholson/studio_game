@@ -1,0 +1,1 @@
+This is a simple, command-line application written for an object-oriented programming course in Ruby.
